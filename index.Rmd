@@ -1,0 +1,230 @@
+---
+title: CSU Course Offering Archive (Beta)
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: fill
+    theme:
+      version: 4
+    orientation: rows
+    source_code: embed
+runtime: shiny
+---
+
+<style>
+.section.sidebar.my-class {
+  overflow: visible;
+  z-index: 10;
+}
+</style>
+
+```{r global, include=FALSE}
+
+knitr::opts_chunk$set(eval = T, echo = F)
+
+library(DBI)
+library(dbplyr)
+library(dplyr)
+library(DT)
+library(shinyWidgets)
+library(stringr)
+
+con <- DBI::dbConnect(RSQLite::SQLite(),
+                      dbname = "main.sqlite")
+
+courses <- dplyr::tbl(con, 'courses') |>
+  dplyr::as_tibble()
+
+instructors <-
+  c(courses$instructor_1,
+    courses$instructor_2,
+    courses$instructor_3) |>
+  unique() |>
+  na.omit() |>
+  as.character()
+
+dept_codes <- read.csv('codes.csv')
+dept_codes <- dept_codes[order(dept_codes$code),]
+```
+
+
+
+Filtering Options {.sidebar .my-class}
+-----------------------------------------------------------------------
+
+```{r}
+
+virtualSelectInput(
+  inputId = 'dept',
+  label = 'Department Code',
+    choices = prepare_choices(.data = dept_codes,
+                              label = code,
+                              value = code, 
+                              description = longname),
+  multiple = T,
+  hasOptionDescription = TRUE, 
+  search = T, 
+  hideClearButton = F
+)
+
+pickerInput(
+  inputId = 'course_id',
+  label = 'Course ID',
+  choices = unique(courses$id),
+  multiple = T,
+  options = list(
+    `live-search` = TRUE,
+    `actions-box` = TRUE,
+    size = 5
+  )
+)
+
+pickerInput(
+  inputId = 'course_name',
+  label = 'Course Name',
+  choices = unique(courses$name),
+  multiple = T,
+  options = list(
+    `live-search` = TRUE,
+    `actions-box` = TRUE,
+    size = 5
+  )
+)
+
+pickerInput(
+  inputId = 'term',
+  label = 'Term',
+  selected = c("Spring", "Summer", "Fall"),
+  choices = c("Spring", "Summer", "Fall"),
+  multiple = T,
+  options = pickerOptions(
+    `live-search` = TRUE,
+    `actions-box` = TRUE,
+    size = 3,
+    style = "btn-light"
+  )
+)
+
+textInput(
+  inputId = 'year_1',
+  width = '50%',
+  label = 'Year Start',
+  value = min(courses$year)
+)
+
+textInput(
+  inputId = 'year_2',
+  width = '50%',
+  label = 'Year End',
+  value = max(courses$year)
+)
+
+pickerInput(
+  inputId = 'instructor',
+  label = 'Instructor Name',
+  choices = instructors,
+  multiple = T,
+  options = list(
+    `live-search` = TRUE,
+    `actions-box` = TRUE,
+    size = 5
+  )
+)
+```
+
+<br>
+
+```{r}
+
+actionButton(inputId = 'reset',
+             label = 'Reset All Values')
+
+observeEvent(input$reset, {
+  for(i in c('course_id', 'course_name', 'dept', 'instructor')){
+    updatePickerInput(session = session, inputId = i, selected = character(0))
+  }
+  
+  updatePickerInput(session = session, inputId = 'year_1', selected = min(courses$year))
+  updatePickerInput(session = session, inputId = 'year_2', selected = max(courses$year))
+
+})
+```
+
+
+
+
+Results {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Course Search Results
+
+<font size=-1>
+
+```{r}
+
+
+DT::renderDT({
+  tmp_courses <- courses
+  
+  if (!is.null(input$dept)) {
+    tmp_courses <- tmp_courses |>
+      dplyr::filter(dept %in% input$dept)
+  }
+  
+  if (!is.null(input$course_id)) {
+    tmp_courses <- tmp_courses |>
+      dplyr::filter(id %in% input$course_id)
+  }
+  
+  if (!is.null(input$course_name)) {
+    tmp_courses <- tmp_courses |>
+      dplyr::filter(name %in% input$course_name)
+  }
+  
+  if (!all(is.null(c(input$year_1, input$year_2)))) {
+    tmp_courses <- tmp_courses |>
+      dplyr::filter(year >= input$year_1 & year <= input$year_2)
+  }
+  
+  if (!is.null(input$instructor)) {
+    tmp_courses <- tmp_courses |>
+      dplyr::filter(
+        c(
+          instructor_1 %in% input$instructor |
+            instructor_2 %in% input$instructor |
+            instructor_3 %in% input$instructor
+        )
+      )
+  }
+  
+  DT::datatable(
+    data = tmp_courses |> 
+      dplyr::select(link, everything()),
+    fillContainer = F,
+    caption = HTML('Have a syllabus to contribute? Upload a PDF <a href="https://colostate-my.sharepoint.com/:f:/g/personal/pengel_colostate_edu/EkrtaXlglq9Iv9gSusCCICQBiEzOTM3Io3YnFuslkZkUcA?e=3z2COR">here</a>.'),
+    selection = 'none',
+    escape = F,
+    options = list(pageLength = 10,
+                   autoWidth = T,
+                   columnDefs = list(
+                     list(className = 'dt-center', 
+                          targets = c(0,1,3,4,8,9))
+                     )
+                   ),
+    colnames = c(
+      'Syllabus<br>Link',
+      'Department<br>Code',
+      'Course<br>Number',
+      'Name',
+      'Term',
+      'Year',
+      'Instructor 1',
+      'Instructor 2',
+      'Instructor 3',
+      'Credits'
+    ),
+    rownames = F
+  )
+})
+```
+
+</font>
