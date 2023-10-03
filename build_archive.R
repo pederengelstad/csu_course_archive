@@ -10,7 +10,7 @@ con <- dbConnect(SQLite(), "main.sqlite")
 
 # Import department history CSVs
 courses <-
-  list.files('../../csu_course_archive_files/depts/', full.names = T)
+  list.files('depts', full.names = T)
 
 courses <-
   read_csv(courses,
@@ -18,7 +18,7 @@ courses <-
            col_types = c('c')) |>
   bind_rows()
 
-syllabi <- read_csv('../../csu_course_archive_files/syllabi_urls.csv',
+syllabi <- read_csv('syllabi_urls.csv',
                     show_col_types = F,
                     col_types = c('c')) |>
   dplyr::mutate(

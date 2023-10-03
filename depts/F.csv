@@ -1,0 +1,14 @@
+dept,id,name,term,year,instructor_1,instructor_2,instructor_3,credits
+F,510,Ecophysiology of Trees,Spring,2022,"Ocheltree, Troy",,,3
+F,510,Ecophysiology of Trees,Spring,2020,"Ocheltree, Troy",,,3
+F,510,Ecophysiology of Trees,Spring,2018,"Ocheltree, Troy",,,3
+F,521,Advanced Quantitative Methods in Forestry II,Fall,2023,"Wei, Yu",,,3
+F,521,Advanced Quantitative Methods in Forestry II,Fall,2022,"Wei, Yu",,,3
+F,521,Advanced Quantitative Methods in Forestry II,Fall,2021,"Wei, Yu",,,3
+F,521,Advanced Quantitative Methods in Forestry II,Fall,2019,"Wei, Yu",,,3
+F,521,Advanced Quantitative Methods in Forestry II,Fall,2017,"Wei, Yu",,,3
+F,624,Fire Ecology,Fall,2023,"Rocca, Monique",,,3
+F,624,Fire Ecology,Fall,2021,"Rocca, Monique",,,3
+F,624,Fire Ecology,Fall,2019,"Rocca, Monique",,,3
+F,624,Fire Ecology,Fall,2017,"Rocca, Monique",,,3
+F,610,Advanced Forest Ecology,,2023,"Hill, Edward",,,3

@@ -1,0 +1,38 @@
+dept,id,name,term,year,instructor_1,instructor_2,instructor_3,credits
+ECOL,505,Foundations of Ecology,Fall,2023,"Pearse, Ian",,,3
+ECOL,505,Foundations of Ecology,Fall,2022,"Knapp, Alan",,,3
+ECOL,505,Foundations of Ecology,Fall,2021,"Knapp, Alan",,,3
+ECOL,505,Foundations of Ecology,Fall,2020,"Knapp, Alan",,,3
+ECOL,505,Foundations of Ecology,Fall,2019,"Knapp, Alan",,,3
+ECOL,505,Foundations of Ecology,Fall,2018,"Knapp, Alan",,,3
+ECOL,505,Foundations of Ecology,Fall,2017,"Knapp, Alan",,,3
+ECOL,505,Foundations of Ecology,Fall,2016,"Knapp, Alan",,,3
+ECOL,505,Foundations of Ecology,Fall,2015,"Knapp, Alan",,,3
+ECOL,505,Foundations of Ecology,Fall,2014,"Knapp, Alan","Lockwood, Dale",,3
+ECOL,505,Foundations of Ecology,Fall,2013,"Knapp, Alan","Lockwood, Dale","Poff, N Leroy",3
+ECOL,505,Foundations of Ecology,Fall,2012,"Knapp, Alan","Lockwood, Dale",,
+ECOL,505,Foundations of Ecology,Fall,2011,"Binkely, Daniel",,,
+ECOL,505,Foundations of Ecology,Fall,2010,"Knapp, Alan",,,
+ECOL,505,Foundations of Ecology,Fall,2009,"Knapp, Alan",,,
+ECOL,505,Foundations of Ecology,Fall,2008,"Knapp, Alan",,,
+ECOL,505,Foundations of Ecology,Fall,2007,"Knapp, Alan",,,
+ECOL,600,Community Ecology,Spring,2023,"Smith, Melinda",,,
+ECOL,600,Community Ecology,Spring,2022,"Smith, Melinda",,,
+ECOL,600,Community Ecology,Spring,2021,"Smith, Melinda",,,
+ECOL,600,Community Ecology,Spring,2020,"Smith, Melinda",,,
+ECOL,600,Community Ecology,Spring,2019,"Smith, Melinda",,,
+ECOL,600,Community Ecology,Spring,2018,"Smith, Melinda",,,
+ECOL,600,Community Ecology,Spring,2017,"Smith, Melinda",,,
+ECOL,600,Community Ecology,Spring,2016,"Smith, Melinda",,,
+ECOL,610,Ecosystem Ecology,Fall,2023,"Von Fischer, Joeseph",,,3
+ECOL,610,Ecosystem Ecology,Fall,2022,"Von Fischer, Joeseph",,,3
+ECOL,610,Ecosystem Ecology,Fall,2021,"Von Fischer, Joeseph",,,3
+ECOL,610,Ecosystem Ecology,Fall,2020,"Von Fischer, Joeseph",,,3
+ECOL,610,Ecosystem Ecology,Fall,2019,"Von Fischer, Joeseph",,,3
+ECOL,610,Ecosystem Ecology,Fall,2018,"Von Fischer, Joeseph",,,3
+ECOL,610,Ecosystem Ecology,Fall,2017,"Von Fischer, Joeseph",,,3
+ECOL,610,Ecosystem Ecology,Fall,2016,"Von Fischer, Joeseph",,,3
+ECOL,620,Applications in Landscape Ecology,Spring,2023,"Horton, Kyle",,,4
+ECOL,620,Applications in Landscape Ecology,Spring,2021,"Horton, Kyle",,,4
+ECOL,620,Applications in Landscape Ecology,Spring,2020,"Horton, Kyle",,,4
+ECOL,620,Applications in Landscape Ecology,Spring,2019,"Sibold, Jason","Monroe, Adrian","Heinrichs, Julie",4

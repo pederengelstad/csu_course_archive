@@ -1,0 +1,11 @@
+dept,id,name,term,year,instructor_1,instructor_2,instructor_3,credits
+ESS,542,Greenhouse Gas Policies,Fall,2023,"Gifford, Lauren",,,3
+ESS,542,Greenhouse Gas Policies,Fall,2022,"Ogle, Stephen",,,3
+ESS,542,Greenhouse Gas Policies,Fall,2021,"Ogle, Stephen",,,3
+ESS,542,Greenhouse Gas Policies,Fall,2020,"Ogle, Stephen",,,3
+ESS,581A2,Citizen Science for Sustainability,Fall,2019,"Lynn, Stacy","Newman, Greg",,3
+ESS,543,Current Topics in Climate Change,Fall,2023,"Denning, Scott",,,2
+ESS,543,Global Climate Change,Fall,2022,"Denning, Scott",,,2
+ESS,543,Global Climate Change,Fall,2021,"Conant, Rich",,,2
+ESS,543,Current Topics in Climate Change,Spring,2021,"Denning, Scott","Conant, Rich",,2
+ESS,543,Current Topics in Climate Change,Spring,2017,"Denning, Scott","Conant, Rich",,2
