@@ -5,7 +5,7 @@ setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 odb <- get_business_onedrive()
 
-dat <- odb$list_items('CSU/GDPE/syllabi')
+dat <- odb$list_items('Apps/Microsoft Forms/Syllabus Upload Form/Question')
 
 urls <- lapply(dat$id, function(x){
   odb$get_item_properties(itemid = x)$webUrl

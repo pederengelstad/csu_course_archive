@@ -1,11 +1,11 @@
 ---
-title: CSU Course Offering Archive (Beta)
+title: GDPE Course & Syllabus Search Tool (CASST)
 output: 
   flexdashboard::flex_dashboard:
     vertical_layout: fill
     theme:
       version: 4
-    orientation: rows
+    orientation: columns
     source_code: embed
 runtime: shiny
 ---
@@ -157,7 +157,9 @@ Results {.tabset .tabset-fade}
 
 ### Course Search Results
 
-<font size=-1>
+Have a syllabus to contribute? Upload a PDF <a href="https://forms.office.com/r/b2EYScSs8X">here</a>.
+
+<!-- <font size=-1> -->
 
 ```{r}
 
@@ -197,18 +199,23 @@ DT::renderDT({
   }
   
   DT::datatable(
+    height = '75vh',
     data = tmp_courses |> 
       dplyr::select(link, everything()),
     fillContainer = F,
-    caption = HTML('Have a syllabus to contribute? Upload a PDF <a href="https://colostate-my.sharepoint.com/:f:/g/personal/pengel_colostate_edu/EkrtaXlglq9Iv9gSusCCICQBiEzOTM3Io3YnFuslkZkUcA?e=3z2COR">here</a>.'),
     selection = 'none',
     escape = F,
     options = list(pageLength = 10,
-                   autoWidth = T,
-                   columnDefs = list(
-                     list(className = 'dt-center', 
-                          targets = c(0,1,3,4,8,9))
-                     )
+                   autoWidth = F,
+                   scrollX = T
+                   # scrollY = T
+                   # scroller = T,
+                   # pageLength = 6
+                   # scrollY = T
+                   # columnDefs = list(
+                   #   list(className = 'dt-center', 
+                   #        targets = c(0,1,3,4,8,9))
+                   #   )
                    ),
     colnames = c(
       'Syllabus<br>Link',
@@ -224,7 +231,7 @@ DT::renderDT({
     ),
     rownames = F
   )
-})
+}, width = '100%')
 ```
 
 </font>
